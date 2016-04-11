@@ -10,13 +10,13 @@ var htmlJsStr = require('js-string-escape');
  * "constants"
  */
 
-var TEMPLATE_HEADER = 'import { Injectable } from "angular2/core";\r\nimport { TemplateCache } from "angular2-templateCache";\r\n@Injectable()\r\nexport class <%= module %>{\r\nconstructor(templateCache: TemplateCache) {';
+var TEMPLATE_HEADER = 'import { Injectable } from "angular2/core";\r\nimport { <%= module %> } from "<%= modulePath %>";\r\n@Injectable()\r\nexport class Templates{\r\nconstructor(templateCache: <%= module %>) {';
 var TEMPLATE_BODY = 'templateCache.put("<%= url %>","<%= contents %>");';
 var TEMPLATE_FOOTER = '}}';
 
 var DEFAULT_FILENAME = 'templates.ts';
-var DEFAULT_MODULE = 'Templates';
-
+var DEFAULT_MODULE = 'TemplateCache';
+var DEFAULT_MODULE_PATH = '/scripts/app/TemplateCache';
 /**
  * Add files to templateCache.
  */
@@ -134,10 +134,12 @@ function templateCache(filename, options) {
     templateCacheStream(options.root || '', options.base, options.templateBody, options.transformUrl),
     concat(filename),
     header(templateHeader, {
-      module: options.module || DEFAULT_MODULE
+      module: options.module || DEFAULT_MODULE,
+      modulePath: options.module || DEFAULT_MODULE_PATH
     }),
     footer(templateFooter, {
-      module: options.module || DEFAULT_MODULE
+      module: options.module || DEFAULT_MODULE,
+      modulePath: options.module || DEFAULT_MODULE_PATH
     })
   );
 
