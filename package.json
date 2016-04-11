@@ -1,12 +1,13 @@
 {
-  "name": "gulp-angular-templatecache",
-  "version": "1.8.0",
-  "description": "Concatenates and registers AngularJS templates in the $templateCache.",
+  "name": "gulp-angular2-templatecache",
+  "version": "1.0.0",
+  "description": "Concatenates and registers Angular2 templates in the TemplateCache of anglar2-templatecache.
+  NOTE: This is based on the good work of gulp-angular-templatecache by http://mickel.me",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
-  "repository": "miickel/gulp-angular-templatecache",
+  "repository": "aarondh/gulp-angular2-templatecache",
   "engines": {
     "node": ">=0.8.0"
   },
@@ -16,16 +17,15 @@
   "keywords": [
     "gulpplugin",
     "gulp",
-    "angular",
-    "angularjs",
+    "angular2",
     "ng",
     "html2js",
     "templatecache"
   ],
   "author": {
-    "name": "Mickel",
-    "email": "andersson.mickel@gmail.com",
-    "url": "http://mickel.me"
+    "name": "Aaron Daisley-harrison",
+    "email": "aaron@daisley-harrison.com",
+    "url": "http://daisley-harrison.com"
   },
   "license": "MIT",
   "dependencies": {
