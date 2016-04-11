@@ -10,33 +10,12 @@ var htmlJsStr = require('js-string-escape');
  * "constants"
  */
 
-var TEMPLATE_HEADER = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
-var TEMPLATE_BODY = '$templateCache.put("<%= url %>","<%= contents %>");';
-var TEMPLATE_FOOTER = '}]);';
+var TEMPLATE_HEADER = 'import { Injectable } from "angular2/core";\r\nimport { TemplateCache } from "angular2-templateCache";\r\n@Injectable()\r\nexport class <%= module %>{\r\nconstructor(templateCache: TemplateCache) {';
+var TEMPLATE_BODY = 'templateCache.put("<%= url %>","<%= contents %>");';
+var TEMPLATE_FOOTER = '}}';
 
-var DEFAULT_FILENAME = 'templates.js';
-var DEFAULT_MODULE = 'templates';
-var MODULE_TEMPLATES = {
-
-  requirejs: {
-    header: 'define([\'angular\'], function(angular) { \'use strict\'; return ',
-    footer: '});'
-  },
-
-  browserify: {
-    header: '\'use strict\'; module.exports = '
-  },
-
-  es6: {
-    header: 'import angular from \'angular\'; export default ',
-  },
-
-  iife: {
-    header: '(function(){',
-    footer: '})();'
-  }
-
-};
+var DEFAULT_FILENAME = 'templates.ts';
+var DEFAULT_MODULE = 'Templates';
 
 /**
  * Add files to templateCache.
@@ -121,24 +100,6 @@ function templateCacheStream(root, base, templateBody, transformUrl) {
 }
 
 /**
- * Wrap templateCache with module system template.
- */
-
-function wrapInModule(moduleSystem) {
-  var moduleTemplate = MODULE_TEMPLATES[moduleSystem];
-
-  if (!moduleTemplate) {
-    return gutil.noop();
-  }
-
-  return es.pipeline(
-    header(moduleTemplate.header || ''),
-    footer(moduleTemplate.footer || '')
-  );
-
-}
-
-/**
  * Concatenates and registers AngularJS templates in the $templateCache.
  *
  * @param {string} [filename='templates.js']
@@ -159,14 +120,6 @@ function templateCache(filename, options) {
   }
 
   /**
-   * Normalize moduleSystem option
-   */
-
-  if (options.moduleSystem) {
-    options.moduleSystem = options.moduleSystem.toLowerCase();
-  }
-
-  /**
    * Prepare header / footer
    */
 
@@ -181,13 +134,11 @@ function templateCache(filename, options) {
     templateCacheStream(options.root || '', options.base, options.templateBody, options.transformUrl),
     concat(filename),
     header(templateHeader, {
-      module: options.module || DEFAULT_MODULE,
-      standalone: options.standalone ? ', []' : ''
+      module: options.module || DEFAULT_MODULE
     }),
     footer(templateFooter, {
       module: options.module || DEFAULT_MODULE
-    }),
-    wrapInModule(options.moduleSystem)
+    })
   );
 
 }
