@@ -2,7 +2,7 @@
   "name": "gulp-angular2-templatecache",
   "version": "1.0.0",
   "description": "Concatenates and registers Angular2 templates in the TemplateCache of anglar2-templatecache.
-  NOTE: This is based on the good work of gulp-angular-templatecache by http://mickel.me",
+  NOTE: This is based on the good work of gulp-angular-templatecache,
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -23,9 +23,9 @@
     "templatecache"
   ],
   "author": {
-    "name": "Aaron Daisley-harrison",
-    "email": "aaron@daisley-harrison.com",
-    "url": "http://daisley-harrison.com"
+    "name": "Mickel",
+    "email": "andersson.mickel@gmail.com",
+    "url": "http://mickel.me"
   },
   "license": "MIT",
   "dependencies": {
