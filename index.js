@@ -16,7 +16,7 @@ var TEMPLATE_FOOTER = '}}';
 
 var DEFAULT_FILENAME = 'templates.ts';
 var DEFAULT_MODULE = 'TemplateCache';
-var DEFAULT_MODULE_PATH = '/scripts/app/TemplateCache';
+var DEFAULT_MODULE_PATH = 'angular2-templatecache/templatecache';
 /**
  * Add files to templateCache.
  */
