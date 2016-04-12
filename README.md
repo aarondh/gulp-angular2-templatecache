@@ -93,6 +93,10 @@ gulp-angular2-templatecache([filename](https://github.com/aarondh/gulp-angular2-
 
 > Prefix for template URLs.
 
+#### className - {string} [className='Templates']
+
+> The class name generated.
+
 #### module - {string} [module='TemplateCache']
 
 > Name of Angular2 caching module to be injected.
@@ -132,7 +136,7 @@ class Templates {
 > Override the template body (see the default template body below).
 
 ```js
-templateCache.put("<%= url %>","<%= contents %>");
+    templateCache.put("<%= url %>","<%= contents %>");
 ```
 
 #### templateFooter {string} [templateFooter=see below]
