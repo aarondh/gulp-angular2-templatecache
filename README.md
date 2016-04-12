@@ -30,7 +30,7 @@ npm install gulp-angular2-templatecache --save-dev
 
 **gulpfile.js**
 
-> Concatenate the contents of all .html-files in the templates directory and save to public/templates.ts_ (default filename).
+> Concatenate the contents of all .html-files in the templates directory and save to _public/templates.ts_ (default filename).
 
 ```js
 var templateCache = require('gulp-angular2-templatecache');
@@ -76,7 +76,7 @@ __Note:__ if you use Visual Studio on Windows, you might encounter this error me
 
 ## API
 
-gulp-angular2-templatecache([filename](https://github.com/miickel/gulp-angular-templatecache#filename---string-filenametemplatesjs), [options](https://github.com/miickel/gulp-angular-templatecache#options))
+gulp-angular2-templatecache([filename](https://github.com/aarondh/gulp-angular2-templatecache#filename---string-filenametemplatests), [options](https://github.com/aarondh/gulp-angular2-templatecache#options))
 
 ---- 
 
@@ -114,26 +114,31 @@ transformUrl: function(url) {
 
 #### templateHeader {string} [templateHeader=see below]
 
-> Override template header.
+> Override the template header (see the default template header below)
 
 ```js
-var TEMPLATE_HEADER = 'import{Injectable} from 'angular2/core';import {<%= module %>} from '<%= modulePath %>';@Injectable()class Templates { constructor( templateCache: <%= module %>) {';
+import{Injectable} from 'angular2/core';
+import {<%= module %>} from '<%= modulePath %>';
+@Injectable()
+class Templates { 
+  constructor( templateCache: <%= module %>) {
 ```
 
 #### templateBody {string} [templateBody=see below]
 
-> Override template body.
+> Override the template body (see the default template body below).
 
 ```js
-var TEMPLATE_BODY = 'templateCache.put("<%= url %>","<%= contents %>");';
+templateCache.put("<%= url %>","<%= contents %>");
 ```
 
 #### templateFooter {string} [templateFooter=see below]
 
-> Override template footer.
+> Override the template footer (see the default template footer below).
 
 ```js
-var TEMPLATE_FOOTER = '}}';
+  }
+}
 ```
 
 
