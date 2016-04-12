@@ -6,7 +6,7 @@
 [![Build Status](http://img.shields.io/travis/miickel/gulp-angular-templatecache.svg?style=flat)](http://travis-ci.org/miickel/gulp-angular-templatecache)
 [![Dependency Status](http://img.shields.io/gemnasium/miickel/gulp-angular-templatecache.svg?style=flat)](https://gemnasium.com/miickel/gulp-angular-templatecache)
 
-> Concatenates and registers AngularJS templates in the `$templateCache`.
+> Concatenates and registers Angular2 templates for the angular2-templatecache package.
 
 <a href="#install">Install</a> |
 <a href="#example">Example</a> |
